@@ -37,17 +37,20 @@
 			this.closeDoorBtn = new System.Windows.Forms.Button();
 			this.doorOpenTimer = new System.Windows.Forms.Timer(this.components);
 			this.doorCloseTimer = new System.Windows.Forms.Timer(this.components);
-			this.texttxt = new System.Windows.Forms.TextBox();
 			this.elevatorUnit = new System.Windows.Forms.PictureBox();
 			this.goDownBtn = new System.Windows.Forms.Button();
 			this.goUpBtn = new System.Windows.Forms.Button();
 			this.goDownTimer = new System.Windows.Forms.Timer(this.components);
 			this.goUpTimer = new System.Windows.Forms.Timer(this.components);
+			this.panel1 = new System.Windows.Forms.Panel();
+			this.callUpBtn = new System.Windows.Forms.Button();
+			this.callDownBtn = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.leftDoorUp)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.rightDoorUp)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.rightDoorDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.leftDoorDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.elevatorUnit)).BeginInit();
+			this.panel1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// leftDoorUp
@@ -88,7 +91,7 @@
 			// 
 			// openDoorBtn
 			// 
-			this.openDoorBtn.Location = new System.Drawing.Point(985, 286);
+			this.openDoorBtn.Location = new System.Drawing.Point(17, 201);
 			this.openDoorBtn.Name = "openDoorBtn";
 			this.openDoorBtn.Size = new System.Drawing.Size(80, 30);
 			this.openDoorBtn.TabIndex = 4;
@@ -98,7 +101,7 @@
 			// 
 			// closeDoorBtn
 			// 
-			this.closeDoorBtn.Location = new System.Drawing.Point(985, 358);
+			this.closeDoorBtn.Location = new System.Drawing.Point(120, 201);
 			this.closeDoorBtn.Name = "closeDoorBtn";
 			this.closeDoorBtn.Size = new System.Drawing.Size(80, 30);
 			this.closeDoorBtn.TabIndex = 5;
@@ -114,25 +117,18 @@
 			// 
 			this.doorCloseTimer.Tick += new System.EventHandler(this.doorCloseTimer_Tick);
 			// 
-			// texttxt
-			// 
-			this.texttxt.Location = new System.Drawing.Point(865, 545);
-			this.texttxt.Name = "texttxt";
-			this.texttxt.Size = new System.Drawing.Size(377, 22);
-			this.texttxt.TabIndex = 6;
-			// 
 			// elevatorUnit
 			// 
 			this.elevatorUnit.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-			this.elevatorUnit.Location = new System.Drawing.Point(611, 100);
+			this.elevatorUnit.Location = new System.Drawing.Point(527, 100);
 			this.elevatorUnit.Name = "elevatorUnit";
-			this.elevatorUnit.Size = new System.Drawing.Size(200, 200);
+			this.elevatorUnit.Size = new System.Drawing.Size(32, 200);
 			this.elevatorUnit.TabIndex = 7;
 			this.elevatorUnit.TabStop = false;
 			// 
 			// goDownBtn
 			// 
-			this.goDownBtn.Location = new System.Drawing.Point(865, 290);
+			this.goDownBtn.Location = new System.Drawing.Point(17, 29);
 			this.goDownBtn.Name = "goDownBtn";
 			this.goDownBtn.Size = new System.Drawing.Size(80, 30);
 			this.goDownBtn.TabIndex = 8;
@@ -142,7 +138,7 @@
 			// 
 			// goUpBtn
 			// 
-			this.goUpBtn.Location = new System.Drawing.Point(865, 358);
+			this.goUpBtn.Location = new System.Drawing.Point(117, 29);
 			this.goUpBtn.Name = "goUpBtn";
 			this.goUpBtn.Size = new System.Drawing.Size(80, 30);
 			this.goUpBtn.TabIndex = 9;
@@ -158,17 +154,47 @@
 			// 
 			this.goUpTimer.Tick += new System.EventHandler(this.goUpTimer_Tick);
 			// 
+			// panel1
+			// 
+			this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+			this.panel1.Controls.Add(this.goDownBtn);
+			this.panel1.Controls.Add(this.goUpBtn);
+			this.panel1.Controls.Add(this.openDoorBtn);
+			this.panel1.Controls.Add(this.closeDoorBtn);
+			this.panel1.Location = new System.Drawing.Point(565, 239);
+			this.panel1.Name = "panel1";
+			this.panel1.Size = new System.Drawing.Size(208, 273);
+			this.panel1.TabIndex = 10;
+			// 
+			// callUpBtn
+			// 
+			this.callUpBtn.Location = new System.Drawing.Point(12, 164);
+			this.callUpBtn.Name = "callUpBtn";
+			this.callUpBtn.Size = new System.Drawing.Size(68, 66);
+			this.callUpBtn.TabIndex = 11;
+			this.callUpBtn.Text = "Call Up";
+			this.callUpBtn.UseVisualStyleBackColor = true;
+			this.callUpBtn.Click += new System.EventHandler(this.button1_Click);
+			// 
+			// callDownBtn
+			// 
+			this.callDownBtn.Location = new System.Drawing.Point(12, 457);
+			this.callDownBtn.Name = "callDownBtn";
+			this.callDownBtn.Size = new System.Drawing.Size(68, 66);
+			this.callDownBtn.TabIndex = 12;
+			this.callDownBtn.Text = "Call Down";
+			this.callDownBtn.UseVisualStyleBackColor = true;
+			this.callDownBtn.Click += new System.EventHandler(this.callDownBtn_Click);
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(1378, 693);
-			this.Controls.Add(this.goUpBtn);
-			this.Controls.Add(this.goDownBtn);
+			this.Controls.Add(this.callDownBtn);
+			this.Controls.Add(this.callUpBtn);
+			this.Controls.Add(this.panel1);
 			this.Controls.Add(this.elevatorUnit);
-			this.Controls.Add(this.texttxt);
-			this.Controls.Add(this.closeDoorBtn);
-			this.Controls.Add(this.openDoorBtn);
 			this.Controls.Add(this.leftDoorDown);
 			this.Controls.Add(this.rightDoorDown);
 			this.Controls.Add(this.rightDoorUp);
@@ -182,8 +208,8 @@
 			((System.ComponentModel.ISupportInitialize)(this.rightDoorDown)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.leftDoorDown)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.elevatorUnit)).EndInit();
+			this.panel1.ResumeLayout(false);
 			this.ResumeLayout(false);
-			this.PerformLayout();
 
 		}
 
@@ -197,12 +223,14 @@
 		private System.Windows.Forms.Button closeDoorBtn;
 		private System.Windows.Forms.Timer doorOpenTimer;
 		private System.Windows.Forms.Timer doorCloseTimer;
-		private System.Windows.Forms.TextBox texttxt;
 		private System.Windows.Forms.PictureBox elevatorUnit;
 		private System.Windows.Forms.Button goDownBtn;
 		private System.Windows.Forms.Button goUpBtn;
 		private System.Windows.Forms.Timer goDownTimer;
 		private System.Windows.Forms.Timer goUpTimer;
+		private System.Windows.Forms.Panel panel1;
+		private System.Windows.Forms.Button callUpBtn;
+		private System.Windows.Forms.Button callDownBtn;
 	}
 }
 
