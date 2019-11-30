@@ -7,3 +7,4 @@ D:\ComputerScience\C#\0000\Elevator\Elevator\obj\Debug\Elevator.Properties.Resou
 D:\ComputerScience\C#\0000\Elevator\Elevator\obj\Debug\Elevator.csproj.GenerateResource.cache
 D:\ComputerScience\C#\0000\Elevator\Elevator\obj\Debug\Elevator.exe
 D:\ComputerScience\C#\0000\Elevator\Elevator\obj\Debug\Elevator.pdb
+D:\ComputerScience\C#\0000\Elevator\Elevator\bin\Debug\appdata\elevator_db.accdb
