@@ -22,12 +22,12 @@ namespace Elevator
 		int yElevatorDown = 324;
 
 		//function variables
-		bool goUpBool = false;
-		bool goDownBool = false;
-		bool doorClosedBool = true;
+		public bool goUpBool = false;
+		public bool goDownBool = false;
+		public bool doorClosedBool = true;
 
 		//counter variables
-		int counter = 0;
+		public int counter = 0;
 
 		public Form1()
 		{
@@ -37,6 +37,7 @@ namespace Elevator
 		
 		private void doorOpen()
 		{
+			//doorObj.doorOpen(rightDoorUp, leftDoorUp, rightDoorDown, leftDoorDown, elevatorUnit, doorOpenTimer, doorCloseTimer);
 
 			if (elevatorUnit.Top <= yElevatorUp)
 			{
@@ -48,7 +49,7 @@ namespace Elevator
 					*/
 					doorObj.doorOpenUp(rightDoorUp, leftDoorUp);
 					disableButtons();
-					
+
 				}
 				else
 				{
@@ -321,7 +322,7 @@ namespace Elevator
 			}
 		}
 
-		private void disableButtons()
+		public void disableButtons()
 		{
 			goUpBtn.Enabled = false;
 			goDownBtn.Enabled = false;
@@ -331,7 +332,7 @@ namespace Elevator
 			callUpBtn.Enabled = false;
 		}
 
-		private void enableButtons()
+		public void enableButtons()
 		{
 			goUpBtn.Enabled = true;
 			goDownBtn.Enabled = true;
@@ -343,19 +344,19 @@ namespace Elevator
 
 
 
-		private void updateDatalog()
+		public void updateDatalog()
 		{
 			logTable.DataSource = datacom.updateLog().DefaultView;
 		}
 
-		private void clearLog()
+		public void clearLog()
 		{
 			logTable.DataSource = null;
 		}
 
-		private void emptyDatabase()
+		public void emptyDatabase()
 		{
-			logTable.DataSource = null; // clears the data of datagrid view
+			logTable.DataSource = null;
 			datacom.deleteRecords();
 		}
 

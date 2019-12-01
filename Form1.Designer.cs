@@ -264,18 +264,16 @@
 			this.firstFloorDisplay.AutoSize = true;
 			this.firstFloorDisplay.Location = new System.Drawing.Point(248, 69);
 			this.firstFloorDisplay.Name = "firstFloorDisplay";
-			this.firstFloorDisplay.Size = new System.Drawing.Size(109, 17);
+			this.firstFloorDisplay.Size = new System.Drawing.Size(0, 17);
 			this.firstFloorDisplay.TabIndex = 14;
-			this.firstFloorDisplay.Text = "firstFloorDisplay";
 			// 
 			// groundFloorDisplay
 			// 
 			this.groundFloorDisplay.AutoSize = true;
 			this.groundFloorDisplay.Location = new System.Drawing.Point(238, 380);
 			this.groundFloorDisplay.Name = "groundFloorDisplay";
-			this.groundFloorDisplay.Size = new System.Drawing.Size(131, 17);
+			this.groundFloorDisplay.Size = new System.Drawing.Size(0, 17);
 			this.groundFloorDisplay.TabIndex = 15;
-			this.groundFloorDisplay.Text = "groundFloorDisplay";
 			// 
 			// firstFloorPicture
 			// 

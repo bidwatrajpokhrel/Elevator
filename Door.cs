@@ -10,7 +10,6 @@ namespace Elevator
 {
 	class Door
 	{
-		Form1 formObj = new Form1();
 		//int xLeftDoorOpen = 86;
 		//int xLeftDoorClosed = 251;
 		//int xRightDoorOpen = 289;
@@ -45,6 +44,48 @@ namespace Elevator
 			rightDoorDown.Left -= 1;
 		}
 
+		//public void doorOpen(PictureBox rightDoorUp, PictureBox leftDoorUp, PictureBox rightDoorDown, PictureBox leftDoorDown,
+		//	PictureBox elevatorPosition, Timer doorOpenTimer, Timer counterTimer)
+		//{
+
+		//	if (elevatorPosition.Top <= yElevatorUp)
+		//	{
+		//		if (rightDoorUp.Left <= xRightDoorOpen && leftDoorUp.Left >= xLeftDoorOpen)
+		//		{
+		//			doorOpenUp(rightDoorUp, leftDoorUp);
+		//			formObj.disableButtons();
+
+		//		}
+		//		else
+		//		{
+		//			datacom.insertActivity("Door Opened at First Floor");
+		//			formObj.updateDatalog();
+		//			doorOpenTimer.Enabled = false;
+		//			formObj.doorClosedBool = false;
+		//			formObj.enableButtons();
+		//			formObj.counter = 0;
+		//			counterTimer.Enabled = true;
+		//		}
+		//	}
+		//	else
+		//	{
+		//		if (rightDoorDown.Left <= xRightDoorOpen && leftDoorDown.Left >= xLeftDoorOpen)
+		//		{
+		//			doorOpenDown(rightDoorDown, leftDoorDown);
+		//			formObj.disableButtons();
+		//		}
+		//		else
+		//		{
+		//			datacom.insertActivity("Door Opened at Ground Floor");
+		//			formObj.updateDatalog();
+		//			formObj.doorClosedBool = false;
+		//			doorOpenTimer.Enabled = false;
+		//			formObj.enableButtons();
+		//			formObj.counter = 0;
+		//			counterTimer.Enabled = true;
+		//		}
+		//	}
+		//}
 	}
 
 }
