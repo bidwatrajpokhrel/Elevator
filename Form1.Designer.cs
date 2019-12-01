@@ -54,6 +54,9 @@
 			this.firstFloorPicture = new System.Windows.Forms.PictureBox();
 			this.groundFloorPicture = new System.Windows.Forms.PictureBox();
 			this.elevatorIndoor = new System.Windows.Forms.PictureBox();
+			this.counterTimer = new System.Windows.Forms.Timer(this.components);
+			this.clearLogBtn = new System.Windows.Forms.Button();
+			this.emptyDatabaseBtn = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.leftDoorUp)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.rightDoorUp)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.rightDoorDown)).BeginInit();
@@ -136,10 +139,12 @@
 			// 
 			// doorOpenTimer
 			// 
+			this.doorOpenTimer.Interval = 10;
 			this.doorOpenTimer.Tick += new System.EventHandler(this.doorOpenTimer_Tick);
 			// 
 			// doorCloseTimer
 			// 
+			this.doorCloseTimer.Interval = 10;
 			this.doorCloseTimer.Tick += new System.EventHandler(this.doorCloseTimer_Tick);
 			// 
 			// elevatorUnit
@@ -175,10 +180,12 @@
 			// 
 			// goDownTimer
 			// 
+			this.goDownTimer.Interval = 10;
 			this.goDownTimer.Tick += new System.EventHandler(this.goDownTimer_Tick);
 			// 
 			// goUpTimer
 			// 
+			this.goUpTimer.Interval = 10;
 			this.goUpTimer.Tick += new System.EventHandler(this.goUpTimer_Tick);
 			// 
 			// panel1
@@ -241,6 +248,9 @@
 			// 
 			// logTable
 			// 
+			this.logTable.AllowUserToAddRows = false;
+			this.logTable.AllowUserToDeleteRows = false;
+			this.logTable.AllowUserToResizeRows = false;
 			this.logTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.logTable.Location = new System.Drawing.Point(884, 101);
 			this.logTable.Name = "logTable";
@@ -300,12 +310,40 @@
 			this.elevatorIndoor.TabIndex = 18;
 			this.elevatorIndoor.TabStop = false;
 			// 
+			// counterTimer
+			// 
+			this.counterTimer.Interval = 10;
+			this.counterTimer.Tick += new System.EventHandler(this.counterTimer_Tick);
+			// 
+			// clearLogBtn
+			// 
+			this.clearLogBtn.Location = new System.Drawing.Point(884, 607);
+			this.clearLogBtn.Name = "clearLogBtn";
+			this.clearLogBtn.Size = new System.Drawing.Size(100, 29);
+			this.clearLogBtn.TabIndex = 19;
+			this.clearLogBtn.Text = "ClearLog";
+			this.clearLogBtn.UseVisualStyleBackColor = true;
+			this.clearLogBtn.Click += new System.EventHandler(this.clearLogBtn_Click);
+			// 
+			// emptyDatabaseBtn
+			// 
+			this.emptyDatabaseBtn.BackColor = System.Drawing.Color.Red;
+			this.emptyDatabaseBtn.Location = new System.Drawing.Point(1224, 607);
+			this.emptyDatabaseBtn.Name = "emptyDatabaseBtn";
+			this.emptyDatabaseBtn.Size = new System.Drawing.Size(130, 29);
+			this.emptyDatabaseBtn.TabIndex = 20;
+			this.emptyDatabaseBtn.Text = "Clear Database";
+			this.emptyDatabaseBtn.UseVisualStyleBackColor = false;
+			this.emptyDatabaseBtn.Click += new System.EventHandler(this.emptyDatabaseBtn_Click);
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
 			this.ClientSize = new System.Drawing.Size(1378, 693);
+			this.Controls.Add(this.emptyDatabaseBtn);
+			this.Controls.Add(this.clearLogBtn);
 			this.Controls.Add(this.groundFloorPicture);
 			this.Controls.Add(this.firstFloorPicture);
 			this.Controls.Add(this.groundFloorDisplay);
@@ -367,6 +405,9 @@
 		private System.Windows.Forms.PictureBox firstFloorPicture;
 		private System.Windows.Forms.PictureBox groundFloorPicture;
 		private System.Windows.Forms.PictureBox elevatorIndoor;
+		private System.Windows.Forms.Timer counterTimer;
+		private System.Windows.Forms.Button clearLogBtn;
+		private System.Windows.Forms.Button emptyDatabaseBtn;
 	}
 }
 

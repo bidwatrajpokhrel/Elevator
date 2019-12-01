@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DatabaseCommands.cs" />
     <Compile Include="ElevatorUnit.cs" />
     <Compile Include="Door.cs" />
     <Compile Include="DatabaseConnection.cs" />

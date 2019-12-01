@@ -9,26 +9,20 @@ namespace Elevator
 {
 	class ElevatorUnit
 	{
-		int yElevatorUp = 82;
-		int yElevatorDown = 324;
+		//int yElevatorUp = 82;
+		//int yElevatorDown = 324;
 
 		public void elevatorUp(PictureBox elevatorIndoor, PictureBox elevatorPosition)
 		{
-			if (elevatorPosition.Top >= yElevatorUp)
-			{
-				elevatorPosition.Top -= 1;
-				elevatorIndoor.Top -= 1;
-			}
+			elevatorPosition.Top -= 1;
+			elevatorIndoor.Top -= 1;
+
 		}
 
 		public void elevatorDown(PictureBox elevatorIndoor, PictureBox elevatorPosition)
 		{
-			//insert_activity("Elevator Going Down");
-			if (elevatorPosition.Top <= yElevatorDown)
-			{
-				elevatorPosition.Top += 1;
-				elevatorIndoor.Top += 1;
-			}
+			elevatorPosition.Top += 1;
+			elevatorIndoor.Top += 1;
 		}
 	}
 }

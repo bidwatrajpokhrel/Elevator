@@ -17,6 +17,7 @@ namespace Elevator
 			try
 			{
 				connection = new OleDbConnection(connectionString);
+				connection.Open();
 			}
 			catch (Exception ex)
 			{

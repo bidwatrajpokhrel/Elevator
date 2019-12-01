@@ -10,40 +10,39 @@ namespace Elevator
 {
 	class Door
 	{
-		int xLeftDoorOpen = 86;
-		int xLeftDoorClosed = 251;
-		int xRightDoorOpen = 289;
-		int xRightDoorClosed = 226;
+		Form1 formObj = new Form1();
+		//int xLeftDoorOpen = 86;
+		//int xLeftDoorClosed = 251;
+		//int xRightDoorOpen = 289;
+		//int xRightDoorClosed = 226;
 
-		public void doorOpen(PictureBox rightDoorUp, PictureBox rightDoorDown, PictureBox leftDoorUp, PictureBox leftDoorDown)
+
+
+		public void doorOpenUp(PictureBox rightDoorUp, PictureBox leftDoorUp)
+		{			
+			leftDoorUp.Left -= 1;
+			rightDoorUp.Left += 1;
+		}
+
+		public void doorOpenDown(PictureBox rightDoorDown, PictureBox leftDoorDown)
 		{
-				if (rightDoorUp.Left <= xRightDoorOpen && leftDoorUp.Left >= xLeftDoorOpen)
-				{
-					leftDoorUp.Left -= 1;
-					rightDoorUp.Left += 1;
-				}
-				else if (rightDoorDown.Left <= xRightDoorOpen && leftDoorDown.Left >= xLeftDoorOpen)
-				{
-					leftDoorDown.Left -= 1;
-					rightDoorDown.Left += 1;
-				}
+			leftDoorDown.Left -= 1;
+			rightDoorDown.Left += 1;
+		}
+
+		public void doorCloseUp(PictureBox rightDoorUp, PictureBox leftDoorUp)
+		{
+
+			leftDoorUp.Left += 1;
+			rightDoorUp.Left -= 1;
 
 		}
 
-		public void doorClose(PictureBox rightDoorUp, PictureBox rightDoorDown, PictureBox leftDoorUp, PictureBox leftDoorDown)
+
+		public void doorCloseDown(PictureBox rightDoorDown, PictureBox leftDoorDown)
 		{
-			if (rightDoorDown.Left >= xRightDoorClosed && leftDoorDown.Left <= xLeftDoorClosed)
-			{
-				leftDoorDown.Left += 1;
-				rightDoorDown.Left -= 1;
-				
-			}
-			else if (rightDoorUp.Left >= xRightDoorClosed && leftDoorUp.Left <= xLeftDoorClosed)
-			{
-				leftDoorUp.Left += 1;
-				rightDoorUp.Left -= 1;
-			}
-				
+			leftDoorDown.Left += 1;
+			rightDoorDown.Left -= 1;
 		}
 
 	}

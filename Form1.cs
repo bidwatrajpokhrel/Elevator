@@ -7,6 +7,11 @@ namespace Elevator
 {
 	public partial class Form1 : Form
 	{
+		DatabaseCommands datacom = new DatabaseCommands();
+
+		Door doorObj = new Door();
+
+		ElevatorUnit elevObj = new ElevatorUnit();
 
 		//coordinate variables
 		int xLeftDoorOpen = 86;
@@ -21,6 +26,9 @@ namespace Elevator
 		bool goDownBool = false;
 		bool doorClosedBool = true;
 
+		//counter variables
+		int counter = 0;
+
 		public Form1()
 		{
 			InitializeComponent();
@@ -32,34 +40,47 @@ namespace Elevator
 
 			if (elevatorUnit.Top <= yElevatorUp)
 			{
-				//insert_activity("FirstFloor doors Opening");
 				if (rightDoorUp.Left <= xRightDoorOpen && leftDoorUp.Left >= xLeftDoorOpen)
 				{
+					/*
 					leftDoorUp.Left -= 1;
-					//leftDoorDown.Left -= 1;
 					rightDoorUp.Left += 1;
-					//rightDoorDown.Left += 1;
+					*/
+					doorObj.doorOpenUp(rightDoorUp, leftDoorUp);
+					disableButtons();
+					
 				}
 				else
 				{
+					datacom.insertActivity("Door Opened at First Floor");
+					updateDatalog();
 					doorOpenTimer.Enabled = false;
 					doorClosedBool = false;
+					enableButtons();
+					counter = 0;
+					counterTimer.Enabled = true;
 				}
 			}
 			else
 			{
-				//insert_activity("GroundFloor doors Opening");
 				if (rightDoorDown.Left <= xRightDoorOpen && leftDoorDown.Left >= xLeftDoorOpen)
 				{
-					//leftDoorUp.Left -= 1;
+					/*
 					leftDoorDown.Left -= 1;
-					//rightDoorUp.Left += 1;
 					rightDoorDown.Left += 1;
+					*/
+					doorObj.doorOpenDown(rightDoorDown, leftDoorDown);
+					disableButtons();
 				}
 				else
 				{
+					datacom.insertActivity("Door Opened at Ground Floor");
+					updateDatalog();
 					doorClosedBool = false;
 					doorOpenTimer.Enabled = false;
+					enableButtons();
+					counter = 0;
+					counterTimer.Enabled = true;
 				}
 			}
 		}
@@ -68,36 +89,44 @@ namespace Elevator
 		{
 			if (elevatorUnit.Top >= yElevatorDown)
 			{
-				//insert_activity("GroundFloor doors closing");
 				if (rightDoorDown.Left >= xRightDoorClosed && leftDoorDown.Left <= xLeftDoorClosed)
 				{
-					//leftDoorUp.Left += 1;
+					/*
 					leftDoorDown.Left += 1;
-					//rightDoorUp.Left -= 1;
 					rightDoorDown.Left -= 1;
+					*/
+					doorObj.doorCloseDown(rightDoorDown, leftDoorDown);
+					disableButtons();
 				}
 				else
 				{
+					datacom.insertActivity("Door Closed at Ground Floor");
+					updateDatalog();
 					doorCloseTimer.Enabled = false;
 					doorClosedBool = true;
-					//checkUpDown();
+					checkDoorClosed();
+					enableButtons();
 				}
 			}
 			else
 			{
-				//insert_activity("FirstFloor doors closing");
 				if (rightDoorUp.Left >= xRightDoorClosed && leftDoorUp.Left <= xLeftDoorClosed)
 				{
+					/*
 					leftDoorUp.Left += 1;
-					//leftDoorDown.Left += 1;
 					rightDoorUp.Left -= 1;
-					//rightDoorDown.Left -= 1;
+					*/
+					doorObj.doorCloseUp(rightDoorUp, leftDoorUp);
+					disableButtons();
 				}
 				else
 				{
+					datacom.insertActivity("Door Closed at First Floor");
+					updateDatalog();
 					doorCloseTimer.Enabled = false;
 					doorClosedBool = true;
-					//checkUpDown();
+					checkDoorClosed();
+					enableButtons();
 				}
 			}
 		}
@@ -106,24 +135,27 @@ namespace Elevator
 		{
 			if (elevatorUnit.Top >= yElevatorUp)
 			{
-				//insert_activity("Elevator Going Up");
+				/*
 				elevatorUnit.Top -= 1;
 				elevatorIndoor.Top -= 1;
+				*/
+				elevObj.elevatorUp(elevatorUnit, elevatorIndoor);
 				firstFloorDisplay.Text = "GOING UP";
 				groundFloorDisplay.Text = "GOING UP";
 				controlPanelDisplay.Text = "GOING UP";
 				firstFloorPicture.Image = Elevator.Properties.Resources.up;
 				groundFloorPicture.Image = Elevator.Properties.Resources.up;
 				controlPannelPicture.Image = Elevator.Properties.Resources.up;
-
+				disableButtons();
 
 			}
 			else
 			{
+				datacom.insertActivity("Elevator at First Floor");
+				updateDatalog();
 				goUpBool = false;
 				goDownBool = false;
 				goUpTimer.Enabled = false;
-				doorOpenTimer.Interval = 10;
 				doorOpenTimer.Enabled = true;
 				firstFloorDisplay.Text = "FIRST FLOOR";
 				groundFloorDisplay.Text = "FIRST FLOOR";
@@ -131,29 +163,34 @@ namespace Elevator
 				firstFloorPicture.Image = Elevator.Properties.Resources.one;
 				groundFloorPicture.Image = Elevator.Properties.Resources.one;
 				controlPannelPicture.Image = Elevator.Properties.Resources.one;
+				enableButtons();
 			}
 		}
 
 		private void elevatorDown()
 		{
-			//insert_activity("Elevator Going Down");
 			if (elevatorUnit.Top <= yElevatorDown)
 			{
+				/*
 				elevatorUnit.Top += 1;
 				elevatorIndoor.Top += 1;
+				*/
+				elevObj.elevatorDown(elevatorUnit, elevatorIndoor);
 				firstFloorDisplay.Text = "GOING DOWN";
 				groundFloorDisplay.Text = "GOING DOWN";
 				controlPanelDisplay.Text = "GOING DOWN";
 				firstFloorPicture.Image = Elevator.Properties.Resources.down;
 				groundFloorPicture.Image = Elevator.Properties.Resources.down;
 				controlPannelPicture.Image = Elevator.Properties.Resources.down;
+				disableButtons();
 			}
 			else
 			{
+				datacom.insertActivity("Elevator at Ground Floor");
+				updateDatalog();
 				goDownBool = false;
 				goUpBool = false;
 				goDownTimer.Enabled = false;
-				doorOpenTimer.Interval = 10;
 				doorOpenTimer.Enabled = true;
 				firstFloorDisplay.Text = "GROUND FLOOR";
 				groundFloorDisplay.Text = "GROND FLOOR";
@@ -161,6 +198,7 @@ namespace Elevator
 				firstFloorPicture.Image = Elevator.Properties.Resources.G;
 				groundFloorPicture.Image = Elevator.Properties.Resources.G;
 				controlPannelPicture.Image = Elevator.Properties.Resources.G;
+				enableButtons();
 
 			}
 		}
@@ -169,7 +207,6 @@ namespace Elevator
 		{
 			if (!doorClosedBool)
 			{
-				doorCloseTimer.Interval = 10;
 				doorCloseTimer.Enabled = true;
 			}
 			else
@@ -178,7 +215,7 @@ namespace Elevator
 				{
 					goUpTimer.Enabled = true;
 				}
-				else
+				else if (goDownBool)
 				{
 					goDownTimer.Enabled = true;
 				}
@@ -199,8 +236,6 @@ namespace Elevator
 
 		private void openDoorBtn_Click(object sender, EventArgs e)
 		{
-			insert_activity("opening doors");
-			doorOpenTimer.Interval = 10;
 			doorOpenTimer.Enabled = true;
 		}
 
@@ -211,8 +246,6 @@ namespace Elevator
 
 		private void closeDoorBtn_Click(object sender, EventArgs e)
 		{
-			insert_activity("closing doors");
-			doorCloseTimer.Interval = 10;
 			doorCloseTimer.Enabled = true;
 		}
 
@@ -223,67 +256,14 @@ namespace Elevator
 
 		private void testtxt_Load(object sender, EventArgs e)
 		{
-			update_log();
+			DatabaseConnection.databaseConnectionFn();
 		}
 
-		private void insert_activity(string activity)
-		{
-			//string conn = @"Provider=Microsoft.ACE.OLEDB.12.0;data source = ./appdata/elevator_db.accdb";
-			//OleDbConnection newCon = new OleDbConnection(conn);
-			string dbCommand = "insert into elevator_log ([Activities], [Date_and_Time]) values (?, ?)";
-			//string dbCommand = "insert into elevator_log ([Date_and_Time]) values (?)";
-			string datetime = DateTime.Now.ToString();
-
-			using (OleDbConnection conn = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;data source = ./appdata/elevator_db.accdb"))
-			using (OleDbCommand cmd = new OleDbCommand(dbCommand, conn))
-			{
-
-				conn.Open();
-				cmd.Parameters.AddWithValue("@Activity", activity);
-				cmd.Parameters.AddWithValue("@Date_and_Time", datetime);
-				cmd.ExecuteNonQuery();
-				conn.Close();
-			}
-
-			update_log();
-
-
-			//OleDbCommand insert_log = new OleDbCommand(dbCommand, newCon);
-			//OleDbDataAdapter adapter_insert = new OleDbDataAdapter(insert_log);
-			//insert_log.Parameters.AddWithValue("@datetime", datetime);
-			//insert_log.Parameters.AddWithValue("@activity", activity);
-
-
-
-			//newCon.Open();
-			//insert_log.ExecuteNonQuery();
-			//newCon.Close();
-
-		}
-
-		private void update_log()
-		{
-			string conn = @"Provider=Microsoft.ACE.OLEDB.12.0;data source = ./appdata/elevator_db.accdb";
-			OleDbConnection newCon = new OleDbConnection(conn);
-			OleDbCommand cmd = new OleDbCommand();
-			cmd.Connection = newCon;
-			cmd.CommandText = "select * from elevator_log";
-			OleDbDataAdapter da = new OleDbDataAdapter(cmd);
-			DataSet ds = new DataSet();
-			newCon.Open();
-			da.Fill(ds);
-			newCon.Close();
-			logTable.DataSource = ds.Tables[0].DefaultView;
-		}
-
+		
 		private void goDownBtn_Click(object sender, EventArgs e)
 		{
-			insert_activity("going down");
-			goDownTimer.Interval = 10;
 			goDownBool = true;
 			checkDoorClosed();
-			//goDownTimer.Enabled = true;
-
 		}
 
 		private void goDownTimer_Tick(object sender, EventArgs e)
@@ -293,11 +273,8 @@ namespace Elevator
 
 		private void goUpBtn_Click(object sender, EventArgs e)
 		{
-			insert_activity("going up");
-			goUpTimer.Interval = 10;
 			goUpBool = true;
 			checkDoorClosed();
-			//goUpTimer.Enabled = true;
 		}
 
 		private void goUpTimer_Tick(object sender, EventArgs e)
@@ -308,16 +285,12 @@ namespace Elevator
 
 		private void button1_Click(object sender, EventArgs e)
 		{
-			insert_activity("going up");
-			goUpTimer.Interval = 10;
 			goUpBool = true;
 			checkDoorClosed();
 		}
 
 		private void callDownBtn_Click(object sender, EventArgs e)
 		{
-			insert_activity("going down");
-			goDownTimer.Interval = 10;
 			goDownBool = true;
 			checkDoorClosed();
 		}
@@ -335,6 +308,65 @@ namespace Elevator
 		private void panel1_Paint(object sender, PaintEventArgs e)
 		{
 
+		}
+
+		private void counterTimer_Tick(object sender, EventArgs e)
+		{
+			counter++;
+			if (counter >= 400)
+			{
+				counter = 0;
+				doorCloseTimer.Enabled = true;
+				counterTimer.Enabled = false;
+			}
+		}
+
+		private void disableButtons()
+		{
+			goUpBtn.Enabled = false;
+			goDownBtn.Enabled = false;
+			openDoorBtn.Enabled = false;
+			closeDoorBtn.Enabled = false;
+			callDownBtn.Enabled = false;
+			callUpBtn.Enabled = false;
+		}
+
+		private void enableButtons()
+		{
+			goUpBtn.Enabled = true;
+			goDownBtn.Enabled = true;
+			openDoorBtn.Enabled = true;
+			closeDoorBtn.Enabled = true;
+			callDownBtn.Enabled = true;
+			callUpBtn.Enabled = true;
+		}
+
+
+
+		private void updateDatalog()
+		{
+			logTable.DataSource = datacom.updateLog().DefaultView;
+		}
+
+		private void clearLog()
+		{
+			logTable.DataSource = null;
+		}
+
+		private void emptyDatabase()
+		{
+			logTable.DataSource = null; // clears the data of datagrid view
+			datacom.deleteRecords();
+		}
+
+		private void clearLogBtn_Click(object sender, EventArgs e)
+		{
+			clearLog();
+		}
+
+		private void emptyDatabaseBtn_Click(object sender, EventArgs e)
+		{
+			emptyDatabase();
 		}
 	}
 }
