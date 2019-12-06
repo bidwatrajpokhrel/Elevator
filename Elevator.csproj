@@ -50,17 +50,16 @@
     <Compile Include="ElevatorUnit.cs" />
     <Compile Include="Door.cs" />
     <Compile Include="DatabaseConnection.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="ElevatorForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="ElevatorForm.Designer.cs">
+      <DependentUpon>ElevatorForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Functions.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="ElevatorForm.resx">
+      <DependentUpon>ElevatorForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -90,13 +89,26 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="resources\closedoor.png" />
+    <None Include="resources\calldown.jpg" />
+    <None Include="resources\callup.jpg" />
+    <None Include="resources\backgroung.jpg" />
     <Content Include="resources\down.png" />
     <None Include="resources\leftdoor.png" />
     <None Include="resources\golden.jpg" />
+    <None Include="resources\Groundfloorbutton.png" />
+    <None Include="resources\firstfloorbutton.png" />
+    <None Include="resources\indoor.png" />
+    <None Include="resources\download.jpg" />
+    <None Include="resources\liftInterior.jpg" />
+    <None Include="resources\liftBox.jpg" />
     <Content Include="resources\one.png" />
     <Content Include="resources\G.png" />
     <None Include="resources\rightdoor.png" />
+    <None Include="resources\opendoor.png" />
     <Content Include="resources\up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="StatePattern\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -2,9 +2,9 @@ D:\ComputerScience\C#\0000\Elevator\Elevator\bin\Debug\Elevator.exe.config
 D:\ComputerScience\C#\0000\Elevator\Elevator\bin\Debug\Elevator.exe
 D:\ComputerScience\C#\0000\Elevator\Elevator\bin\Debug\Elevator.pdb
 D:\ComputerScience\C#\0000\Elevator\Elevator\obj\Debug\Elevator.csprojAssemblyReference.cache
-D:\ComputerScience\C#\0000\Elevator\Elevator\obj\Debug\Elevator.Form1.resources
 D:\ComputerScience\C#\0000\Elevator\Elevator\obj\Debug\Elevator.Properties.Resources.resources
 D:\ComputerScience\C#\0000\Elevator\Elevator\obj\Debug\Elevator.csproj.GenerateResource.cache
 D:\ComputerScience\C#\0000\Elevator\Elevator\obj\Debug\Elevator.exe
 D:\ComputerScience\C#\0000\Elevator\Elevator\obj\Debug\Elevator.pdb
 D:\ComputerScience\C#\0000\Elevator\Elevator\bin\Debug\appdata\elevator_db.accdb
+D:\ComputerScience\C#\0000\Elevator\Elevator\obj\Debug\Elevator.ElevatorForm.resources

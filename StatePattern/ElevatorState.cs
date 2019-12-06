@@ -1,0 +1,16 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Elevator
+{
+	public interface ElevatorState
+	{
+		void doorOpen();
+		void doorClose();
+		void moveUp();
+		void moveDown();
+	}
+}

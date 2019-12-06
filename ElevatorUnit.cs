@@ -7,18 +7,15 @@ using System.Windows.Forms;
 
 namespace Elevator
 {
+	//class for contrilling elevator of the elevator
 	class ElevatorUnit
 	{
-		//int yElevatorUp = 82;
-		//int yElevatorDown = 324;
-
 		public void elevatorUp(PictureBox elevatorIndoor, PictureBox elevatorPosition)
 		{
 			elevatorPosition.Top -= 1;
 			elevatorIndoor.Top -= 1;
 
 		}
-
 		public void elevatorDown(PictureBox elevatorIndoor, PictureBox elevatorPosition)
 		{
 			elevatorPosition.Top += 1;
